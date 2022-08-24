@@ -25,7 +25,7 @@ const loginUser = async (req, res, next) => {
             { user_id: user._id, username },
              ACCESS_TOKEN_SECRET ,
             {
-              expiresIn: "120s",
+              expiresIn: "2h",
             })
         const refreshToken =  jwt.sign(
             { user_id: user._id, username },

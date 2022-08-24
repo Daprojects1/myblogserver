@@ -10,6 +10,9 @@ const createBlogController = async (req, res) => {
         return res.status(400).json({message: 'Please input a blog message and title'})
     }
 
+    
+    const { user_id } = req.user
+
     const mainBlog = {
         message,
         title,
@@ -17,18 +20,16 @@ const createBlogController = async (req, res) => {
         readTime: rTime(message),
         datePosted: getTime(),
         likes: 0,
-        comments: '',
+        comments: [],
         preview: getPreview(message),
-        // Set userId to logged in user Id. 
-        userId:''
+        userId:user_id
     }
 
-    console.log(mainBlog)
     try {
         const blog = await createBlog(mainBlog)
-        console.log(blog)
         res.status(201).json({blog, message: 'Success !'})
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: 'Internal Server Error'})
     }
 }

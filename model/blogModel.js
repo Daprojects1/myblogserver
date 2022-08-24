@@ -20,11 +20,7 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    comments: [{
-        message: String,
-        timeCommented: String,
-        userName: String,
-    }]
+    comments:[{}]
 })
 
 module.exports = mongoose.model('blogs',BlogSchema)
