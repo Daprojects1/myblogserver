@@ -3,13 +3,9 @@ const router = express.Router()
 const getAllBlogsController = require('../controllers/BlogControllers/getAllBlogsController')
 const createBlogController = require('../controllers/BlogControllers/createBlogController')
 const updateBlogController = require('../controllers/BlogControllers/updateBlogController')
+const deleteBlogController = require('../controllers/BlogControllers/deleteBlogController')
+const getBlogByIdController = require('../controllers/BlogControllers/getBlogByIdController')
 const auth = require('../middleware/auth') 
-const {
-    getAllBlogs,
-    getBlogById,
-    updateBlog,
-    deleteBlog
-} = require('../model/services/blogModelServices')
 
 
 router.route("/")
@@ -17,7 +13,9 @@ router.route("/")
     .post(auth, createBlogController)
     
 router.route("/:id")
-    .put(updateBlogController)
+    .get(getBlogByIdController)
+    .put(auth,updateBlogController)
+    .delete(auth,deleteBlogController)
 
 
 module.exports = router

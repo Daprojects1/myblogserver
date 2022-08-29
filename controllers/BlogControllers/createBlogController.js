@@ -11,7 +11,7 @@ const createBlogController = async (req, res) => {
     }
 
     
-    const { user_id } = req.user
+    const { user_id,username } = req.user
 
     const mainBlog = {
         message,
@@ -22,7 +22,8 @@ const createBlogController = async (req, res) => {
         likes: 0,
         comments: [],
         preview: getPreview(message),
-        userId:user_id
+        userId: user_id,
+        userName:username
     }
 
     try {

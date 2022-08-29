@@ -12,7 +12,8 @@ const updateBlogController = async (req, res) => {
     if (!currentBlog) return res.status(404).json({ msg: `blog doesn't exist !` })
     
     try {
-        const blogBody = await updateBlog(id, {message})
+        const blogBody = await updateBlog(id, { message })
+        
         res.status(200).json({data:blogBody, msg: 'Success !' })
     } catch (error) {
         res.status(500).json({msg:'Internal Server Error'})
