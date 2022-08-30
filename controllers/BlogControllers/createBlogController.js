@@ -10,7 +10,7 @@ const createBlogController = async (req, res) => {
         return res.status(400).json({message: 'Please input a blog message and title'})
     }
 
-    
+    // going to be recieving html instead that can be displayed. 
     const { user_id,username } = req.user
 
     const mainBlog = {
