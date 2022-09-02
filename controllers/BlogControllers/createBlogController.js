@@ -5,6 +5,7 @@ const getPreview = require('../../utils/getPreview')
 
 
 const createBlogController = async (req, res) => {
+    
     const { message, title,image } = req.body
     if (!message || !title) {
         return res.status(400).json({message: 'Please input a blog message and title'})
