@@ -1,14 +1,17 @@
 const { createBlog } = require('../../model/services/blogModelServices')
 const getTime = require('../../utils/getTime')
 const rTime = require('../../utils/readTime')
-const getPreview = require('../../utils/getPreview')
+
 
 
 const createBlogController = async (req, res) => {
-    
-    const { message, title,image } = req.body
-    if (!message || !title) {
-        return res.status(400).json({message: 'Please input a blog message and title'})
+
+    console.log(req.file)
+
+    console.log(req.body)
+    const { message, title, image, preview } = req.body
+    if (!message || !title || !preview) {
+        return res.status(400).json({message: 'Please input a blog message, title and preview'})
     }
 
     // going to be recieving html instead that can be displayed. 
@@ -17,12 +20,12 @@ const createBlogController = async (req, res) => {
     const mainBlog = {
         message,
         title,
-        image,
+        image:req.file?.path || "No image uploaded",
+        preview,
         readTime: rTime(message),
         datePosted: getTime(),
         likes: 0,
         comments: [],
-        preview: getPreview(message),
         userId: user_id,
         userName:username
     }
