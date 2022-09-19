@@ -1,4 +1,4 @@
-const whiteList = ['https://blogscity.herokuapp.com/', 'http://localhost:5050', 'http://localhost:3000', ]
+const whiteList = ['https://blogscity.herokuapp.com', 'http://localhost:5050', 'http://localhost:3000', ]
 
 const corsOptions = {
     origin: (origin, callback) => {
