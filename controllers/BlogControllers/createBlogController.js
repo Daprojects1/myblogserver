@@ -5,9 +5,12 @@ const upload = require("../../utils/upload")
 
 
 const createBlogController = async (req, res) => {
-
+    if (req.fileValidationError) {
+        return res.status(400).json({msg:'File extension not valid'})
+    }
     upload(req, res, async (err) => {
         if (err) {
+            console.log(err)
             res.status(400).json({message:err?.message})
             return 
         }

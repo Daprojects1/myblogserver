@@ -11,12 +11,12 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-    const match = ['image/jpeg', 'img/png']
+    const match = ['image/jpeg', 'image/png','image/gif',]
     if (match.indexOf(file.mimetype) !== -1) {
         cb(null, true)
         return 
     }
-
+    req.fileValidationError = "Forbidden extension";
     cb(null, false)
 
 }
