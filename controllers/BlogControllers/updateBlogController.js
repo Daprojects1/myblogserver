@@ -4,8 +4,9 @@ const upload = require('../../utils/upload')
 const deleteImage = require('../../utils/deleteImage')
 
 const updateBlogController = async (req, res) => {
-
-
+    if (req.fileValidationError) {
+        return res.status(400).json({msg:'File extension not valid'})
+    }
     upload(req, res, async (err) => {
         if (err) {
             console.log(err)
@@ -25,10 +26,14 @@ const updateBlogController = async (req, res) => {
 
         if (!currentBlog) return res.status(404).json({ msg: `blog doesn't exist !` })
     
+        const image = file?.path ? file?.path : !imgText ? '' : currentBlog?.image 
+        
         try {              
             const blogBody = await updateBlog(id, {
-                message, title, preview, image: file?.path ? file?.path : !imgText ? '' : currentBlog?.image 
+                message, title, preview, image
             })
+
+
             if (blogBody?.image && !imgText) {
                 deleteImage(currentBlog)
             }
