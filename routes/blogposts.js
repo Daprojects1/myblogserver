@@ -14,7 +14,6 @@ router
   .route("/:id")
   .get(getBlogByIdController)
   .put(auth, updateBlogController)
-  .post(auth, updateLikesController)
   .delete(auth, deleteBlogController);
 
 module.exports = router;

@@ -31,6 +31,7 @@ const createBlogController = async (req, res) => {
       readTime: rTime(message),
       datePosted: getTime(),
       likes: [],
+      totalLikes: 0,
       comments: [],
       userId: user_id,
       userName: username,

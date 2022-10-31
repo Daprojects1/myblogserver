@@ -16,6 +16,10 @@ const BlogSchema = new mongoose.Schema({
   },
   datePosted: String,
   likes: [{}],
+  totalLikes: {
+    type: Number,
+    required: true,
+  },
   userId: {
     type: String,
     required: true,
