@@ -48,7 +48,7 @@ const registerUser = async (req, res, next) => {
         admin,
         createdAt,
         _id,
-        accessToken,
+        accessToken: token,
       };
     };
 
